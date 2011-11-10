@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>Chompas de Alpaca</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="estilo.css" rel="stylesheet" type="text/css" media="screen"/>
+  </head>
+  <body>
+    <h1>Chompas de Alpaca</h1>
+    <div id="productos">
+        <form method="post" name="compras" action="?opcion=comprar">
+      <table>
+        <tr>
+         <th>ID</th><th>Nombre</th><th>Cantidad</th>
+        </tr>
+        <?php foreach($lista as $p) { ?>
+        <tr>
+            <td><input type="radio" name="producto" value="<?php echo $p->getProductoId(); ?>"/></td>
+            <td><?php echo $p->getNombre() ?></td>
+            <td><?php echo $p->getCantidad() ?></td>
+            
+        </tr>
+      <?php } ?>
+      <tr>
+          <td colspan="2"><input type="text" name="cantidad"/></td>
+          <td ><input type="submit" name="boton"  value="agregar"/></td>
+     </tr>
+
+      </table>
+</form>
+
+
+    </div>
+    <div id="pendientes">
+        <?php if($pendientes != null){ ?>
+        <table>
+        <tr>
+            <td>
+                <th>Pedido</th>
+                <th>Fecha</th>
+                <th>Insumo</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th></th>
+            <td>
+            <?php foreach($pendientes as $p){ ?>
+            <td>
+                <td><?php echo $p[0]->getPedidoId(); ?></td>
+                <td><?php echo $p[0]->getFecha(); ?></td>
+                <td><?php echo $p[1]; ?></td>
+                <td><?php echo $p[2] ?></td>
+                <td><?php echo $p[0]->getCantidad(); ?></td>
+                <td><a href="?opcion=aceptarPedido">aceptar</a></td>
+            <td>
+            <?php } ?>
+        </tr>
+        </table>
+        <?php } ?>
+    </div>
+  </body>
+</html>

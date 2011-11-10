@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>Chompas de Alpaca</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="estilo.css" rel="stylesheet" type="text/css" media="screen"/>
+  </head>
+  <body>
+    <h1>Chompas de Alpaca</h1>
+    <p><a href="?opcion=cerrar">salir</a></p>
+    <div >
+        <form action="?opcion=procesar" method="post" name="carrito">
+      <table>
+        <tr>
+         <th>ID</th><th>Nombre</th><th>Cantidad</th>
+        </tr>
+        <?php if($lista != null){ ?>
+        <?php foreach($lista as $p) { ?>
+        <tr>
+            <td><?php echo $p[0]->getProductoId(); ?></td>
+            <td><?php echo $p[0]->getNombre(); ?></td>
+            <td><?php echo $p[1]; ?></td>
+            <td><a href="?opcion=eliminar&id=<?php echo $p[0]->getProductoId();?>">eliminar</a></td>
+        </tr>
+      <?php } ?>
+      <tr>
+          <td colspan="3" align="right"><input type="submit" name="boton" value="procesar" /></td>
+      </tr>
+      <?php } ?>
+      
+      </table>
+        </form>
+        <p><a href="ChompasView.php">volver</a></p>
+
+    </div>
+  </body>
+</html>

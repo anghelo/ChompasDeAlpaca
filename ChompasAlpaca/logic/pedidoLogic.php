@@ -1,5 +1,7 @@
 <?php
 require_once '../model/pedido.php';
+require_once 'productoLogic.php';
+require_once 'productoLogic.php';
 abstract class pedidoLogic {
      public static function getAll(){
         $pedido= new pedido();
@@ -14,6 +16,20 @@ abstract class pedidoLogic {
 
         }
         return null;
+    }
+    public static function getPedidosPendientes(){
+        $todos=self::getAll();
+        $encontrados=array();
+        foreach ($todos as $p) {
+            if($p->getEstado()==0){
+                
+                $producto=  productoLogic::buscarPorId($p->getPedidoId());
+                $insumo=  insumoLogic::buscarPorId($producto->getInsumoId());
+                $encontrados[]= array($p,$insumo->getNombre(),$producto->getNombre());
+            }
+
+        }
+        return $encontrados;
     }
     public static function insertar( $fecha, $cantidad, $insumoId){
         $pedido= new pedido(null, $fecha, $cantidad, $insumoId, 0);

@@ -8,7 +8,7 @@ abstract class productoLogic {
      public static function buscarPorId($id){
         $todos=self::getAll();
         foreach ($todos as $p) {
-            if($p->getPrductoId()==$id){
+            if($p->getProductoId()==$id){
                 return $p;
             }
 
@@ -19,6 +19,7 @@ abstract class productoLogic {
         $pedido= self::buscarPorId($id);
         $pedido->setCantidad($cantidad);
         $pedido->actualizar();
+        //falta verificar con el minimo
     }
 }
 ?>
