@@ -36,7 +36,7 @@ public static function ejecutar(){
                     $micarrito = new CarritoLogic();
                     $todos=$micarrito->getProductos();
                     foreach($todos as $p){
-                        productoLogic::modificar($p[0]->getProductoId(),$p[0]->getCantidad()- $p[1]);
+                        productoLogic::modificar($p[0]->getProductoId(),- $p[1]);
                     }
                     self::_mostrarInicio($productos,$pendientes);
                     break;

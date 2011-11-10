@@ -31,14 +31,16 @@ abstract class pedidoLogic {
         }
         return $encontrados;
     }
-    public static function insertar( $fecha, $cantidad, $insumoId){
-        $pedido= new pedido(null, $fecha, $cantidad, $insumoId, 0);
+    public static function insertar( $fecha, $cantidad, $productoId){
+        $pedido= new pedido(null, $fecha, $cantidad, $productoId, 0);
         return $pedido->insertar();
     }
     public static function modificar($id){
         $pedido= self::buscarPorId($id);
         $pedido->setEstado(1);
         $pedido->actualizar();
+        $producto=productoLogic::buscarPorId($pedido->getPedidoId());
+        productoLogic::modificar($pedido->getProductoId(), $pedido->getCantidad());
     }
 }
 ?>

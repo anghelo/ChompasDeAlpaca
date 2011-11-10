@@ -1,5 +1,6 @@
 <?php
 require_once '../model/producto.php';
+require_once 'pedidoLogic.php';
 abstract class productoLogic {
    public static function getAll(){
         $producto= new producto();
@@ -16,10 +17,12 @@ abstract class productoLogic {
         return null;
     }
     public static function modificar($id,$cantidad){
-        $pedido= self::buscarPorId($id);
-        $pedido->setCantidad($cantidad);
-        $pedido->actualizar();
-        //falta verificar con el minimo
+        $producto= self::buscarPorId($id);
+        $producto->setCantidad($producto->getCantidad()+ $cantidad);
+        $producto->actualizar();
+        if($producto->getCantidad()<$producto->getMinimo()){
+            pedidoLogic::insertar(date('Y-m-d'), $producto->getCantidadPedido(), $producto->getProductoId());
+        }
     }
 }
 ?>
