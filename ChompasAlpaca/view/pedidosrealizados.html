@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>Chompas de Alpaca</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="estilo.css" rel="stylesheet" type="text/css" media="screen"/>
+  </head>
+  <body>
+    <h1>Chompas de Alpaca</h1>
+    
+    <div id="pedidos">
+        <?php if($pedidos != null){ ?>
+        <table>
+        <tr>
+            <td>
+                <th>Pedido</th>
+                <th>Fecha</th>
+                <th>Producto</th>
+                <th></th>
+            <td>
+        </tr>
+            <?php foreach($pedidos as $p){ ?>
+        <tr>
+            <td>
+                <td><?php echo $p[0]->getPedidoId(); ?></td>
+                <td><?php echo $p[0]->getFecha(); ?></td>
+                <td><?php echo $p[1]->getNombre(); ?></td>
+                <td><a href="?opcion=verDetalle&id=<?php echo $p[0]->getPedidoId(); ?>">ver Detalle</a></td>
+            <td>
+        </tr>
+            <?php } ?>
+
+        </table>
+        <?php } ?>
+        <p><a href="ChompasView.php">volver</a></p>
+    </div>
+  </body>
+</html>

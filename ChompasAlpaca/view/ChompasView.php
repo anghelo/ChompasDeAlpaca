@@ -1,6 +1,5 @@
 <?php
 require_once '../logic/productoLogic.php';
-require_once '../logic/insumoLogic.php';
 require_once '../logic/pedidoLogic.php';
 require_once '../logic/CarritoLogic.php';
 session_start();
@@ -53,6 +52,15 @@ public static function ejecutar(){
                     $todos=$micarrito->getProductos();
                     $pendientes=pedidoLogic::getPedidosPendientes();
                     self::_mostrarInicio($todos, $pendientes);
+                case 'pedidos':
+                    self::_mostrarPedidos(pedidoLogic::getPedidosRealizados());
+                    break;
+                case 'verDetalle':
+                    $pedido= pedidoLogic::buscarPorId($_GET['id']);
+                    $producto=productoLogic::buscarPorId($pedido->getProductoId());
+                    self::_verDetallePedido($pedido, $producto);
+                    break;
+
                 case 'cerrar':
                     session_destroy();
                     header("location:../index.php");
@@ -67,6 +75,12 @@ public static function _mostrarInicio($lista,$pendientes){
 }
 public static function _mostrarCarrito($lista){
     require_once 'carrito.html';
+}
+public static function _mostrarPedidos($pedidos){
+    require_once 'pedidosrealizados.html';
+}
+public static function _verDetallePedido($pedido,$producto){
+    require_once 'verDetallePedido.html';
 }
 }
 ChompasView::ejecutar();

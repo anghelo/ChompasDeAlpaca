@@ -29,6 +29,18 @@ abstract class pedidoLogic {
         }
         return $encontrados;
     }
+     public static function getPedidosRealizados(){
+        $todos=self::getAll();
+        $encontrados=array();
+        foreach ($todos as $p) {
+            if($p->getEstado()==1){
+                $producto=  productoLogic::buscarPorId($p->getProductoId());
+                $encontrados[]= array($p,$producto);
+            }
+
+        }
+        return $encontrados;
+    }
     public static function insertar( $fecha, $cantidad, $productoId){
         $pedido= new pedido(null, $fecha, $cantidad, $productoId, 0);
         return $pedido->insertar();

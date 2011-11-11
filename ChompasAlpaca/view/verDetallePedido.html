@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>Chompas de Alpaca</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="estilo.css" rel="stylesheet" type="text/css" media="screen"/>
+  </head>
+  <body>
+    <h1>Chompas de Alpaca</h1>
+
+    <div id="pedidos">
+        <?php if($pedido != null){ ?>
+        <table>
+        <tr>
+            <td>
+                <th>Pedido</th>
+                <th>Fecha</th>
+                <th>Insumo</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th></th>
+            <td>
+        </tr>
+        <tr>
+            <td>
+                <td><?php echo $pedido->getPedidoId(); ?></td>
+                <td><?php echo $pedido->getFecha(); ?></td>
+                <td><?php echo $producto->getInsumo(); ?></td>
+                <td><?php echo $producto->getNombre(); ?></td>
+                <td><?php echo $pedido->getCantidad(); ?></td>
+            <td>
+        </tr>
+
+        </table>
+        <?php } ?>
+        <p><a href="?opcion=pedidos">volver</a></p>
+    </div>
+
+  </body>
+</html>
