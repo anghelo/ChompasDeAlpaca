@@ -39,6 +39,7 @@ public static function ejecutar(){
                         productoLogic::modificar($p[0]->getProductoId(),- $p[1]);
                     }
                     $_SESSION['carrito']=null;
+                    $productos=  productoLogic::getAll();
                     $pendientes=pedidoLogic::getPedidosPendientes();
                     self::_mostrarInicio($productos,$pendientes);
                     break;
