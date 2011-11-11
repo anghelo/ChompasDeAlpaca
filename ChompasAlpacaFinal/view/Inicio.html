@@ -97,7 +97,6 @@
 
     </div>
     <div id="pendientes">
-<<<<<<< HEAD
             <?php if($pendientes != null){ ?>
                <?php foreach($pendientes as $p){ ?>
         <div>
@@ -126,31 +125,3 @@ var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgRight:"../SpryAssets/Spry
 
 
 
-=======
-        <?php if($pendientes != null){ ?>
-        <table>
-        <tr>
-            <td>
-                <th>Pedido</th>
-                <th>Descripcion</th>
-                <th></th>
-            <td>
-        </tr>
-            <?php foreach($pendientes as $p){ ?>
-        <tr>
-            <td>
-                <td><?php echo 'pedido '.$p[0]->getPedidoId().'
-                    -'.$p[0]->getFecha(); ?></td>
-                <td><?php echo 'se solicita '.$p[0]->getCantidad().' de material de tipo'. $p[1]->getInsumo(); ?></td>
-                <td><a href="?opcion=aceptarPedido&id=<?php echo $p[0]->getPedidoId(); ?>">aceptar</a></td>
-            <td>
-        </tr>
-            <?php } ?>
-        
-        </table>
-        <?php } ?>
-    </div>
-    <p><a href="?opcion=pedidos">ver todos los pedidos</a></p>
-  </body>
-</html>
->>>>>>> cbf742b6e38de26402729e8bac12b8b1695ed423

@@ -20,7 +20,7 @@ class insumo{
             $insumoId=$insumo['insumoId'];
             $nombre = $insumo['nombre'];
             $ninsumo = new insumo($insumoId, $nombre);
-            $lista[] = $insumo;
+            $lista[] = $ninsumo;
         }
         return $lista;
     }

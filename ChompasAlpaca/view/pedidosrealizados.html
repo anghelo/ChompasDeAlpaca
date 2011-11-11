@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -40,10 +41,24 @@
                 <div id="Centro">
              <h1>Chompas de Alpaca</h1>
 
+=======
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>Chompas de Alpaca</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="estilo.css" rel="stylesheet" type="text/css" media="screen"/>
+  </head>
+  <body>
+    <h1>Chompas de Alpaca</h1>
+    
+>>>>>>> cbf742b6e38de26402729e8bac12b8b1695ed423
     <div id="pedidos">
         <?php if($pedidos != null){ ?>
         <table>
         <tr>
+<<<<<<< HEAD
 
                 <th>Pedido</th>
                 <th>Fecha</th>
@@ -59,11 +74,26 @@
                 <td><?php echo $p[1]->getNombre(); ?></td>
                 <td><a href="?opcion=verDetalle&id=<?php echo $p[0]->getPedidoId(); ?>">ver Detalle</a></td>
 
+=======
+            <td>
+                <th>Pedido</th>
+                <th></th>
+            <td>
+        </tr>
+            <?php foreach($pedidos as $p){ ?>
+        <tr>
+            <td>
+            <td><?php echo 'pedido '.$p[0]->getPedidoId().'
+                -'.$p[0]->getFecha(); ?></td>
+                <td><a href="?opcion=verDetalle&id=<?php echo $p[0]->getPedidoId(); ?>">ver Detalle</a></td>
+            <td>
+>>>>>>> cbf742b6e38de26402729e8bac12b8b1695ed423
         </tr>
             <?php } ?>
 
         </table>
         <?php } ?>
+<<<<<<< HEAD
         
     </div>
 
@@ -88,3 +118,9 @@ var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgRight:"../SpryAssets/Spry
 
 
 
+=======
+        <p><a href="ChompasView.php">volver</a></p>
+    </div>
+  </body>
+</html>
+>>>>>>> cbf742b6e38de26402729e8bac12b8b1695ed423
