@@ -1,5 +1,6 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Chompas de Alpaca</title>
@@ -28,45 +29,46 @@
   <tr>
     <td bgcolor="#32470F"><ul id="MenuBar2" class="MenuBarHorizontal">
             <li><a href="ChompasView.php">Inicio</a></li>
-      
-       <li><a href="?opcion=pedidos" >Ver Pedidos</a></li>
+    
+           <li><a href="?opcion=pedidos" >Ver Pedidos</a></li>
+       
     </ul></td>
   </tr>
         <tr>
             <td>
+
                 <div id="Centro">
-
              <h1>Chompas de Alpaca</h1>
-    <p><a href="?opcion=cerrar">salir</a></p>
-    <div >
-        <form action="?opcion=procesar" method="post" name="carrito">
-      <table>
-        <tr>
-         <th>ID</th><th>Nombre</th><th>Cantidad</th>
-        </tr>
-        <?php if($lista != null){ ?>
-        <?php foreach($lista as $p) { ?>
-        <tr>
-            <td><?php echo $p[0]->getProductoId(); ?></td>
-            <td><?php echo $p[0]->getNombre(); ?></td>
-            <td><?php echo $p[1]; ?></td>
-            <td><a href="?opcion=eliminar&id=<?php echo $p[0]->getProductoId();?>">eliminar</a></td>
-        </tr>
-      <?php } ?>
-      <tr>
-          <td colspan="3" align="right"><input type="submit" name="boton" value="procesar" /></td>
-      </tr>
-      <?php } ?>
 
-      </table>
-        </form>
-        <p><a href="ChompasView.php">volver</a></p>
+    <div id="pedidos">
+        <?php if($pedidos != null){ ?>
+        <table>
+        <tr>
 
+                <th>Pedido</th>
+                <th>Fecha</th>
+                <th>Producto</th>
+                <th></th>
+
+        </tr>
+            <?php foreach($pedidos as $p){ ?>
+        <tr>
+
+                <td><?php echo $p[0]->getPedidoId(); ?></td>
+                <td><?php echo $p[0]->getFecha(); ?></td>
+                <td><?php echo $p[1]->getNombre(); ?></td>
+                <td><a href="?opcion=verDetalle&id=<?php echo $p[0]->getPedidoId(); ?>">ver Detalle</a></td>
+
+        </tr>
+            <?php } ?>
+
+        </table>
+        <?php } ?>
+        
     </div>
 
 
-
-    </div>
+</div>
 
 
 
@@ -83,10 +85,6 @@ var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgRight:"../SpryAssets/Spry
 </script>
 </body>
 </html>
-
-
-
-
 
 
 

@@ -12,7 +12,10 @@ class CarritoLogic {
         if(isset( $this->_colProductos[$producto->getProductoId()][1])){
             $cantidad= $this->_colProductos[$producto->getProductoId()][1];
         }
-        $this->_colProductos[$producto->getProductoId()]= array($producto,$cantidad+$cant);
+        if($cantidad+$cant<=$producto->getCantidad()){
+            $this->_colProductos[$producto->getProductoId()]= array($producto,$cantidad+$cant);
+
+        }
              $_SESSION['carrito']  =serialize($this->_colProductos);
     }
 
