@@ -49,7 +49,7 @@ class pedido{
         $sql->addValues($this->cantidad);
         $sql->addValues($this->productoId);
         $sql->addValues($this->estado);
-        return Persistence::ejecutarSentencia($sql,0);
+        return Persistence::consultar($sql, 0);
     }
      public function actualizar(){
         $sql = new SQL();

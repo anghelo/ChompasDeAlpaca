@@ -38,8 +38,17 @@ public static function ejecutar(){
                     foreach($todos as $p){
                         productoLogic::modificar($p[0]->getProductoId(),- $p[1]);
                     }
+                    $_SESSION['carrito']=null;
+                    $pendientes=pedidoLogic::getPedidosPendientes();
                     self::_mostrarInicio($productos,$pendientes);
                     break;
+                case 'aceptarPedido':
+                    $id=$_GET['id'];
+                    pedidoLogic::modificar($id);
+                    $micarrito = new CarritoLogic();
+                    $todos=$micarrito->getProductos();
+                    $pendientes=pedidoLogic::getPedidosPendientes();
+                    self::_mostrarInicio($todos, $pendientes);
                 case 'cerrar':
                     session_destroy();
                     header("location:../index.php");

@@ -44,17 +44,20 @@
                 <th>Cantidad</th>
                 <th></th>
             <td>
+        </tr>
             <?php foreach($pendientes as $p){ ?>
+        <tr>
             <td>
                 <td><?php echo $p[0]->getPedidoId(); ?></td>
                 <td><?php echo $p[0]->getFecha(); ?></td>
-                <td><?php echo $p[1]; ?></td>
-                <td><?php echo $p[2] ?></td>
+                <td><?php echo $p[1]->getInsumo(); ?></td>
+                <td><?php echo $p[1]->getNombre(); ?></td>
                 <td><?php echo $p[0]->getCantidad(); ?></td>
-                <td><a href="?opcion=aceptarPedido">aceptar</a></td>
+                <td><a href="?opcion=aceptarPedido&id=<?php echo $p[0]->getPedidoId(); ?>">aceptar</a></td>
             <td>
-            <?php } ?>
         </tr>
+            <?php } ?>
+        
         </table>
         <?php } ?>
     </div>
