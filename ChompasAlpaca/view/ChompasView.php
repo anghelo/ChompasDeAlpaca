@@ -17,13 +17,16 @@ public static function ejecutar(){
         }else{
             switch ($opcion){
                 case 'comprar':
+                    if(isset($_POST['producto']) & isset ($_POST['cantidad']) & $_POST['cantidad']!=0){
                     $id=$_POST['producto'];
                     $micarrito = new CarritoLogic();
                     $producto=productoLogic::buscarPorId($id);
                     $cantidad=$_POST['cantidad'];
                     $micarrito->addProducto($producto,$cantidad);
                     $lista= $micarrito->getProductos();
-                    self::_mostrarCarrito($lista);
+                    self::_mostrarCarrito($lista);}else{
+                        self::_mostrarInicio(productoLogic::getAll(), pedidoLogic::getPedidosPendientes());
+                    }
                     break;
                case 'eliminar':
                     $id=$_GET['id'];
