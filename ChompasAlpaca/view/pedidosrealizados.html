@@ -15,17 +15,14 @@
         <tr>
             <td>
                 <th>Pedido</th>
-                <th>Fecha</th>
-                <th>Producto</th>
                 <th></th>
             <td>
         </tr>
             <?php foreach($pedidos as $p){ ?>
         <tr>
             <td>
-                <td><?php echo $p[0]->getPedidoId(); ?></td>
-                <td><?php echo $p[0]->getFecha(); ?></td>
-                <td><?php echo $p[1]->getNombre(); ?></td>
+            <td><?php echo 'pedido '.$p[0]->getPedidoId().'
+                -'.$p[0]->getFecha(); ?></td>
                 <td><a href="?opcion=verDetalle&id=<?php echo $p[0]->getPedidoId(); ?>">ver Detalle</a></td>
             <td>
         </tr>

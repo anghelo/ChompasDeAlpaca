@@ -49,9 +49,10 @@ public static function ejecutar(){
                     $id=$_GET['id'];
                     pedidoLogic::modificar($id);
                     $micarrito = new CarritoLogic();
-                    $todos=$micarrito->getProductos();
+                    $todos=productoLogic::getAll();
                     $pendientes=pedidoLogic::getPedidosPendientes();
                     self::_mostrarInicio($todos, $pendientes);
+                    break;
                 case 'pedidos':
                     self::_mostrarPedidos(pedidoLogic::getPedidosRealizados());
                     break;
